@@ -4,7 +4,7 @@ module.exports = {
     // メインとなるJavaScriptファイル（エントリーポイント）
     mode: process.env.NODE_ENV || "development",
     entry: {
-        popup: "./src/popup.ts",
+        popup: "./src/popup.tsx",
     },
     output: {
         path: `${__dirname}/dist/js`,
@@ -24,8 +24,9 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.ts$/,
+                test: /\.tsx?$/,
                 use: 'ts-loader',
+                exclude: /node_modules/
             },
         ],
     },

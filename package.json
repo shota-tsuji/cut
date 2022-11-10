@@ -2,7 +2,7 @@
   "name": "chrome-extension",
   "version": "1.0.0",
   "description": "",
-  "main": "src/popup.ts",
+  "main": "src/popup.tsx",
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
