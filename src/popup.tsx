@@ -9,6 +9,7 @@ if (!!container) {
     root.render(
         <React.StrictMode>
             <Popup />
+            <Popup />
         </React.StrictMode>,
     );
 }
