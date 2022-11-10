@@ -12,14 +12,17 @@ class PageInfo {
             this.title = tab.title;
         }
     }
+
+    getMarkdownText() {
+        return`[${this.title}](${this.url})`;
+    }
 }
 
 async function copyForMarkdown() {
     let queryOptions = { active: true, lastFocusedWindow: true };
     let [tab] = await chrome.tabs.query(queryOptions);
     const pageInfo = new PageInfo(tab);
-    const text = `[${pageInfo.title}](${pageInfo.url})`;
-    await navigator.clipboard.writeText(text);
+    await navigator.clipboard.writeText(pageInfo.getMarkdownText());
 }
 
 export default function Popup() {
