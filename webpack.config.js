@@ -4,7 +4,7 @@ module.exports = {
     // メインとなるJavaScriptファイル（エントリーポイント）
     mode: process.env.NODE_ENV || "development",
     entry: {
-        popup: "./src/index.ts",
+        popup: "./src/popup.ts",
     },
     output: {
         path: `${__dirname}/dist/js`,
