@@ -5,4 +5,7 @@ async function popup() {
     await navigator.clipboard.writeText(text);
 }
 
-document.getElementById("alertButton").addEventListener("click", popup);
+const button = document.getElementById("alertButton");
+if (!!button) {
+    button.addEventListener("click", popup);
+}
