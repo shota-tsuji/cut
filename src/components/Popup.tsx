@@ -1,33 +1,13 @@
 import * as React from "react";
 
-class PageInfo {
-    url: string = '';
-    title: string = '';
-
-    constructor(tab: chrome.tabs.Tab) {
-        if (!!tab.url) {
-            this.url = tab.url;
-        }
-        if (!!tab.title) {
-            this.title = tab.title;
-        }
-    }
-
-    getMarkdownText() {
-        return`[${this.title}](${this.url})`;
-    }
+interface Props {
+    name: string;
+    func: () => Promise<void>
 }
 
-async function copyForMarkdown() {
-    let queryOptions = { active: true, lastFocusedWindow: true };
-    let [tab] = await chrome.tabs.query(queryOptions);
-    const pageInfo = new PageInfo(tab);
-    await navigator.clipboard.writeText(pageInfo.getMarkdownText());
-}
-
-export default function Popup() {
+export default function Popup(props: Props) {
     return (
-        <button onClick={copyForMarkdown}>Copy for Markdown</button>
+        <button onClick={props.func}>{props.name}</button>
     );
 }
 
