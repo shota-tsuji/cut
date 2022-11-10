@@ -1,6 +1,6 @@
 import * as React from "react";
 
-async function popup() {
+async function copyForMarkdown() {
     let queryOptions = { active: true, lastFocusedWindow: true };
     let [tab] = await chrome.tabs.query(queryOptions);
     const text = `[${tab.title}](${tab.url})`;
@@ -9,7 +9,7 @@ async function popup() {
 
 export default function Popup() {
     return (
-        <button onClick={popup}>copy as Markdown</button>
+        <button onClick={copyForMarkdown}>Copy for Markdown</button>
     );
 }
 
