@@ -19,13 +19,25 @@ async function copyForJira() {
     await navigator.clipboard.writeText(pageInfo.getJiraText());
 }
 
-const container = document.getElementById("root");
-if (!!container) {
-    const root = createRoot(container);
-    root.render(
-        <React.StrictMode>
-            <Popup name="Copy for Markdown" func={copyForMarkdown}/>
-            <Popup name="Copy for Jira" func={copyForJira}/>
-        </React.StrictMode>,
-    );
+class PopupService  {
+    private readonly html: HTMLElement | null;
+
+    constructor() {
+        this.html = document.getElementById("root");
+    }
+
+    main() {
+        if (!!this.html) {
+            const root = createRoot(this.html);
+            root.render(
+                <React.StrictMode>
+                    <Popup name="Copy for Markdown" func={copyForMarkdown}/>
+                    <Popup name="Copy for Jira" func={copyForJira}/>
+                </React.StrictMode>,
+            );
+        }
+    }
 }
+
+const popupService = new PopupService();
+popupService.main();
