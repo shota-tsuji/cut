@@ -1,6 +1,10 @@
+import "reflect-metadata";
+
 import {IPageInfoRepository} from "../domain/IPageInfoRepository";
 import PageInfoDto from "../domain/PageInfoDto";
+import {injectable} from "inversify";
 
+@injectable()
 export default class ChromeTabRepository implements IPageInfoRepository {
     async getPageInfo(): Promise<PageInfoDto> {
         let queryOptions = {active: true, lastFocusedWindow: true};
