@@ -3,18 +3,19 @@ import { createRoot } from "react-dom/client";
 import Popup from "./components/Popup";
 import './popup.css';
 import PageInfo from "./domain/PageInfo";
+import ChromeTabRepository from "./infrastructure/ChromeTabRepository";
 
 async function copyForMarkdown() {
-    let queryOptions = { active: true, lastFocusedWindow: true };
-    let [tab] = await chrome.tabs.query(queryOptions);
-    const pageInfo = new PageInfo(tab);
+    const pageInfoRepository = new ChromeTabRepository();
+    const pageInfoDto = await pageInfoRepository.getPageInfo()
+    const pageInfo = new PageInfo(pageInfoDto.url, pageInfoDto.title);
     await navigator.clipboard.writeText(pageInfo.getMarkdownText());
 }
 
 async function copyForJira() {
-    let queryOptions = { active: true, lastFocusedWindow: true };
-    let [tab] = await chrome.tabs.query(queryOptions);
-    const pageInfo = new PageInfo(tab);
+    const pageInfoRepository = new ChromeTabRepository();
+    const pageInfoDto = await pageInfoRepository.getPageInfo()
+    const pageInfo = new PageInfo(pageInfoDto.url, pageInfoDto.title);
     await navigator.clipboard.writeText(pageInfo.getJiraText());
 }
 

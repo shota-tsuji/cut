@@ -2,13 +2,9 @@ export default class PageInfo {
     url: string = '';
     title: string = '';
 
-    constructor(tab: chrome.tabs.Tab) {
-        if (!!tab.url) {
-            this.url = tab.url;
-        }
-        if (!!tab.title) {
-            this.title = tab.title;
-        }
+    constructor(url: string, title: string) {
+        this.url = url;
+        this.title = title;
     }
 
     getMarkdownText() {
