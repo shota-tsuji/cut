@@ -22,6 +22,9 @@ export default function OutlinedCard(props: Props) {
                             textAlign="center">
                     Copy formats
                 </Typography>
+                <Typography variant="subtitle1" color="text.secondary" textAlign="center">
+                    copy the URL and Title
+                </Typography>
                 <CardContent>
                     {buttonList}
                 </CardContent>
