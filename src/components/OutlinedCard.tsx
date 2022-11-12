@@ -13,7 +13,7 @@ interface Props {
 export default function OutlinedCard(props: Props) {
     const buttonProps = props.buttonProps;
     const buttonList = buttonProps
-        .map((button) => <ClickButton name={button.name} func={button.func}/>);
+        .map((button) => <ClickButton name={button.name} func={button.func} key={button.name}/>);
 
     return (
         <Box sx={{minWidth: 275}}>
