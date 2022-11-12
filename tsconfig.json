@@ -9,11 +9,7 @@
         "lib": [
             "ES2021",
             "DOM"
-        ],
-        "types": ["reflect-metadata", "chrome"],
-        // inversify
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        ]
     },
     "exclude": [
         "node_modules"
