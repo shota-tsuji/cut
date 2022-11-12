@@ -3,7 +3,7 @@ import OutlinedCard from "./components/OutlinedCard";
 import {IPageInfoRepository} from "./domain/IPageInfoRepository";
 import ChromeTabRepository from "./infrastructure/ChromeTabRepository";
 import {createRoot} from "react-dom/client";
-import PageInfo from "./domain/PageInfo";
+import PageInfo, {Format} from "./domain/PageInfo";
 import * as React from "react";
 
 class PopupService {
@@ -18,19 +18,15 @@ class PopupService {
     async main() {
         const pageInfoDto = await this.pageInfoRepository.getPageInfo();
         const pageInfo = new PageInfo(pageInfoDto.url, pageInfoDto.title);
-        const data = [
-            {
-                name: "Markdown",
+        const formats: Format[] = ["markdown", "jira"];
+        const data = formats.map(format => {
+            return {
+                name: format,
                 func: () => {
-                    this.pageInfoRepository.savePageInfo(pageInfo, "markdown")
+                    this.pageInfoRepository.savePageInfo(pageInfo, format)
                 }
-            },
-            {
-                name: "Jira",
-                func: () => {
-                    this.pageInfoRepository.savePageInfo(pageInfo, "jira")
-                }
-            }];
+            };
+        });
 
         if (!!this.html) {
             const root = createRoot(this.html);
