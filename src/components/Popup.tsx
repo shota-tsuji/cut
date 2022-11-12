@@ -1,4 +1,5 @@
 import * as React from "react";
+import {Button} from "@mui/material";
 
 interface Props {
     name: string;
@@ -7,7 +8,7 @@ interface Props {
 
 export default function Popup(props: Props) {
     return (
-        <button onClick={props.func}>{props.name}</button>
+        <Button variant="contained" onClick={props.func} sx={{ width: 200, padding: 1, margin: 2}}>{props.name}</Button>
     );
 }
 

@@ -1,8 +1,8 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
 import Popup from "./components/Popup";
-import './popup.css';
 import PasteService from "./domain/PasteService";
+import {CssBaseline} from "@mui/material";
 
 class PopupService  {
     private readonly html: HTMLElement | null;
@@ -18,8 +18,9 @@ class PopupService  {
             const root = createRoot(this.html);
             root.render(
                 <React.StrictMode>
-                    <Popup name="Copy for Markdown" func={this.pasteService.copyForMarkdown}/>
-                    <Popup name="Copy for Jira" func={this.pasteService.copyForJira}/>
+                    <CssBaseline />
+                    <Popup name="Markdown" func={this.pasteService.copyForMarkdown}/>
+                    <Popup name="Jira" func={this.pasteService.copyForJira}/>
                 </React.StrictMode>,
             );
         }
