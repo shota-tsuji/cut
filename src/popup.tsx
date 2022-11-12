@@ -1,28 +1,35 @@
-import * as React from "react";
-import {createRoot} from "react-dom/client";
-import PasteService from "./domain/PasteService";
 import {CssBaseline} from "@mui/material";
 import OutlinedCard from "./components/OutlinedCard";
-
+import {IPageInfoRepository} from "./domain/IPageInfoRepository";
+import ChromeTabRepository from "./infrastructure/ChromeTabRepository";
+import {createRoot} from "react-dom/client";
+import PageInfo from "./domain/PageInfo";
+import * as React from "react";
 
 class PopupService {
     private readonly html: HTMLElement | null;
-    private readonly pasteService: PasteService;
+    private readonly pageInfoRepository: IPageInfoRepository;
 
-    constructor() {
+    constructor(repository: IPageInfoRepository) {
         this.html = document.getElementById("root");
-        this.pasteService = new PasteService();
+        this.pageInfoRepository = repository;
     }
 
-    main() {
+    async main() {
+        const pageInfoDto = await this.pageInfoRepository.getPageInfo();
+        const pageInfo = new PageInfo(pageInfoDto.url, pageInfoDto.title);
         const data = [
             {
                 name: "Markdown",
-                func: this.pasteService.copyForMarkdown
+                func: () => {
+                    this.pageInfoRepository.savePageInfo(pageInfo, "markdown")
+                }
             },
             {
                 name: "Jira",
-                func: this.pasteService.copyForJira
+                func: () => {
+                    this.pageInfoRepository.savePageInfo(pageInfo, "jira")
+                }
             }];
 
         if (!!this.html) {
@@ -37,5 +44,5 @@ class PopupService {
     }
 }
 
-const popupService = new PopupService();
+const popupService = new PopupService(new ChromeTabRepository());
 popupService.main();

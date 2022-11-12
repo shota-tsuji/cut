@@ -1,7 +1,6 @@
-import "reflect-metadata";
-
 import {IPageInfoRepository} from "../domain/IPageInfoRepository";
 import PageInfoDto from "../domain/PageInfoDto";
+import PageInfo, {Format} from "../domain/PageInfo";
 
 export default class ChromeTabRepository implements IPageInfoRepository {
     async getPageInfo(): Promise<PageInfoDto> {
@@ -15,4 +14,7 @@ export default class ChromeTabRepository implements IPageInfoRepository {
         return new PageInfoDto(tab.url, tab.title);
     };
 
+    async savePageInfo(pageInfo: PageInfo, format: Format): Promise<void> {
+        await navigator.clipboard.writeText(pageInfo.getText(format));
+    }
 }

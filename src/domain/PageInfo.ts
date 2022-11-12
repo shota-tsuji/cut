@@ -1,3 +1,5 @@
+export type Format = "markdown" | "jira";
+
 export default class PageInfo {
     url: string = '';
     title: string = '';
@@ -7,12 +9,12 @@ export default class PageInfo {
         this.title = title;
     }
 
-    getMarkdownText() {
-        return`[${this.title}](${this.url})`;
-    }
-
-    getJiraText() {
-        return`[${this.title}|${this.url}]`;
+    getText(format: Format) {
+        if (format === "markdown") {
+            return`[${this.title}](${this.url})`;
+        } else {
+            return`[${this.title}|${this.url}]`;
+        }
     }
 }
 

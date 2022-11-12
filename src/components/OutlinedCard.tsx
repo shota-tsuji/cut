@@ -5,7 +5,7 @@ import ClickButton from "./ClickButton";
 interface Props {
     buttonProps: {
         name: string,
-        func: () => Promise<void>
+        func: () => void
     }[],
     cardTitle: string
 }
