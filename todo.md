@@ -5,4 +5,6 @@
 - [ ] cssをコンポーネントごとにimportするか調べる
 - [x] 複数のHTML Tagを並べて返すReactの機能を使う
 - [x] Reactのjsx,tsxを使用する宣言をtsconfig.jsonに記述する
-- [ ] urlとtitleを格納するクラスを作成
+- [x] urlとtitleを格納するクラスを作成
+- [ ] Formatを列挙型にするか検討する
+- [ ] コンポーネントで指定するkeyの値を決める
