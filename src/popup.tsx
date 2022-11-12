@@ -41,4 +41,4 @@ class PopupService {
 }
 
 const popupService = new PopupService(new ChromeTabRepository());
-popupService.main();
+void popupService.main();
