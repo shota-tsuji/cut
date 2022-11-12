@@ -17,7 +17,7 @@ class PopupService {
 
     async main() {
         const pageInfo = await this.pageInfoRepository.getPageInfo();
-        const formats: Format[] = ["markdown", "jira"];
+        const formats: Format[] = ["markdown", "jira", "plain text"];
         const data = formats.map(format => {
             return {
                 name: format,

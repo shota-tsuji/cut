@@ -1,8 +1,8 @@
-export type Format = "markdown" | "jira";
+export type Format = "markdown" | "jira" | "plain text";
 
 export default class PageInfo {
-    url: string = '';
-    title: string = '';
+    private readonly url: string = '';
+    private readonly title: string = '';
 
     constructor(url: string, title: string) {
         this.url = url;
@@ -12,8 +12,12 @@ export default class PageInfo {
     getText(format: Format) {
         if (format === "markdown") {
             return`[${this.title}](${this.url})`;
-        } else {
+        } else if (format === "jira") {
             return`[${this.title}|${this.url}]`;
+        } else if (format === "plain text") {
+            return`${this.title}\n${this.url}`;
+        } else {
+            return "copy failed.";
         }
     }
 }
