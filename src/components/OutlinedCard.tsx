@@ -1,7 +1,6 @@
-import {Box, Button, Card, CardContent, Typography} from "@mui/material";
+import {Box, Card, CardContent, Typography} from "@mui/material";
 import * as React from "react";
-import Popup from "./Popup";
-import {Fragment} from "react";
+import ClickButton from "./ClickButton";
 
 interface Props {
     buttonProps: {
@@ -14,12 +13,13 @@ interface Props {
 export default function OutlinedCard(props: Props) {
     const buttonProps = props.buttonProps;
     const buttonList = buttonProps
-        .map((button) => <Popup name={button.name} func={button.func}/>);
+        .map((button) => <ClickButton name={button.name} func={button.func}/>);
 
     return (
-        <Box sx={{ minWidth: 275 }}>
+        <Box sx={{minWidth: 275}}>
             <Card variant="outlined">
-                <Typography sx={{ fontSize: 28, padding: 1, margin: 2}} color="text.secondary" gutterBottom textAlign="center">
+                <Typography sx={{fontSize: 28, padding: 1, margin: 2}} color="text.secondary" gutterBottom
+                            textAlign="center">
                     Copy formats
                 </Typography>
                 <CardContent>

@@ -1,12 +1,11 @@
 import * as React from "react";
-import { createRoot } from "react-dom/client";
-import Popup from "./components/Popup";
+import {createRoot} from "react-dom/client";
 import PasteService from "./domain/PasteService";
 import {CssBaseline} from "@mui/material";
 import OutlinedCard from "./components/OutlinedCard";
 
 
-class PopupService  {
+class PopupService {
     private readonly html: HTMLElement | null;
     private readonly pasteService: PasteService;
 
@@ -17,20 +16,20 @@ class PopupService  {
 
     main() {
         const data = [
-                {
-                    name: "Markdown",
-                    func: this.pasteService.copyForMarkdown
-                },
-                {
-                    name: "Jira",
-                    func: this.pasteService.copyForJira
-                }];
+            {
+                name: "Markdown",
+                func: this.pasteService.copyForMarkdown
+            },
+            {
+                name: "Jira",
+                func: this.pasteService.copyForJira
+            }];
 
         if (!!this.html) {
             const root = createRoot(this.html);
             root.render(
                 <React.StrictMode>
-                    <CssBaseline />
+                    <CssBaseline/>
                     <OutlinedCard buttonProps={data} cardTitle="Copy"/>
                 </React.StrictMode>,
             );
