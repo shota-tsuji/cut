@@ -1,4 +1,4 @@
-import {CssBaseline} from "@mui/material";
+import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
 import OutlinedCard from "./components/OutlinedCard";
 import {IPageInfoRepository} from "./domain/IPageInfoRepository";
 import ChromeTabRepository from "./infrastructure/ChromeTabRepository";
@@ -27,13 +27,21 @@ class PopupService {
             };
         });
 
+        const darkTheme = createTheme({
+            palette: {
+                mode: "dark"
+            },
+        });
+
         if (!!this.html) {
             const root = createRoot(this.html);
             root.render(
                 <React.StrictMode>
-                    <CssBaseline/>
-                    <OutlinedCard buttonProps={data} cardTitle="Copy"/>
-                </React.StrictMode>,
+                    <ThemeProvider theme={darkTheme}>
+                        <CssBaseline/>
+                        <OutlinedCard buttonProps={data} cardTitle="Copy"/>
+                    </ThemeProvider>
+                </React.StrictMode>
             );
         }
     }
