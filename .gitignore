@@ -35,3 +35,5 @@ dist/**/*
 
 # ignore yarn.lock
 yarn.lock
+# macOS
+.DS_Store
