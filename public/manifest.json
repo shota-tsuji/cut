@@ -1,7 +1,7 @@
 {
   "name": "copy the URL and Title",
   "manifest_version": 3,
-  "version": "0.1",
+  "version": "0.1.0",
   "action": {
     "default_title": "CUT",
     "default_popup": "popup.html"
@@ -12,6 +12,13 @@
     "128": "icon128.png"
   },
   "permissions": [
-    "tabs"
-  ]
+    "tabs",
+    "clipboardWrite"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "cut@shota-tsuji",
+      "strict_min_version": "109.0"
+    }
+  }
 }
