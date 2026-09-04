@@ -1,7 +1,7 @@
 import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
 import OutlinedCard from "./components/OutlinedCard";
 import {IPageInfoRepository} from "./domain/IPageInfoRepository";
-import ChromeTabRepository from "./infrastructure/ChromeTabRepository";
+import BrowserTabRepository from "./infrastructure/BrowserTabRepository";
 import {createRoot} from "react-dom/client";
 import {Format} from "./domain/PageInfo";
 import * as React from "react";
@@ -47,5 +47,5 @@ class PopupService {
     }
 }
 
-const popupService = new PopupService(new ChromeTabRepository());
+const popupService = new PopupService(new BrowserTabRepository());
 void popupService.main();
